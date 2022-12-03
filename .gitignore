@@ -1,0 +1,6 @@
+# venv
+/aoc_env/
+# custom
+/.idea
+/2022/parsing.py
+*.pyc
