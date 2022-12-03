@@ -3,4 +3,6 @@
 # custom
 /.idea
 /2022/parsing.py
+/2020/parsing.py
+/2020/usefull.py
 *.pyc
