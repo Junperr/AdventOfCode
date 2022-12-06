@@ -1,4 +1,6 @@
-"""all fonction except erathostene and n_col are from https://github.com/iKevinY/advent/blob/master/2022/utils.py"""
+"""all fonction from line 9 to 332 except erathostene and n_col
+are from https://github.com/iKevinY/advent/blob/master/2022/utils.py
+past 332 it's mine"""
 
 import re
 import math

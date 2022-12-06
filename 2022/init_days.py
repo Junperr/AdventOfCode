@@ -17,11 +17,21 @@ from usefull import Point, DIRS, DIRS_4, DIRS_8, N, NE, E, SE, S, SW, W, NW
 # combinations_with_replacement('ABCD', 2)    AA AB AC AD BB BC BD CC CD DD
 # Ascii code :                                A 65,Z 90,a 97,z 122,0 48,9 57
 
+# day  .input .l() .par() .b2d()
 
-# day  .input .l .par .b2d
-tot = 0
-res = []
 
 # clip = pyperclip.paste()
 # day = parsing.Day(year=2022, day=1, sample=clip)
 day = parsing.Day(year=2022, day=1)
+
+def part1(day):
+
+    pass
+
+print(part1(day))
+
+def part2(day):
+
+    pass
+
+print(part2(day))

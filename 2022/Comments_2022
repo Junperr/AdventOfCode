@@ -34,6 +34,7 @@
 
 #### Comments
 
+I mess up a lot on this problem, it wasn't hard but i wrote a lot of errors at first
 
 ### [Day 04: TBA](https://adventofcode.com/2022/day/4)
 [problem](https://adventofcode.com/2022/day/4) / [solution](./day04)
@@ -45,7 +46,11 @@
 
 #### Comments
 
-
+more mess with my initial file
+I was especially slow with the second part
+In fact i was just stupid for part 2 :
+    One thing appear clearly I absolutly need to learn the intersection function for list
+    it's been to day in a row where it was needed
 
 ### [Day 05: TBA](https://adventofcode.com/2022/day/5)
 [problem](https://adventofcode.com/2022/day/5) / [solution](./day05)
@@ -57,7 +62,10 @@
 
 #### Comments
 
-
+I was especially bad with parsing today
+I kept part1 without cleaning it to show how much debug i made
+(which is close to how much issue i got)
+really bad day i need to be more carefull with day.par
 
 ### [Day 06: TBA](https://adventofcode.com/2022/day/6)
 [problem](https://adventofcode.com/2022/day/6) / [solution](./day06)
@@ -69,6 +77,8 @@
 
 #### Comments
 
+late start for today, got a bit confused by .input which isn't a method but a attribute of self
+(I first used day.input() rather than day.input)
 
 
 ### [Day 07: TBA](https://adventofcode.com/2022/day/7)
