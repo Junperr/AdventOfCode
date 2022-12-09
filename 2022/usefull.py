@@ -332,3 +332,33 @@ DIRS_8 = [
     Point(-1, 0),   # W
     Point(-1, 1),   # NW
 ]
+
+class NonBinTree:
+
+    def __init__(self, val):
+        self.x = val # the root
+        self.c = []  # the childs
+
+    def add_node(self, val):
+        if type(val) == str:
+            self.c.append(NonBinTree(val))
+        else:
+            self.c.append(Leaf(val[0],val[1]))
+
+    def list_c_values(self):
+        l = []
+        for i in range(len(self.c)):
+            if type(self.c[i]) == NonBinTree:
+                l.append(self.c[i].x)
+            else:
+                l.append(self.c[i].n)
+        return l
+    def __repr__(self):
+        return f"NonBinTree({self.x}): {self.c}"
+
+class Leaf:
+    def __init__(self,val:int,name):
+        self.x = val
+        self.n = name
+    def __repr__(self):
+        return f"Leaf({self.x})"
