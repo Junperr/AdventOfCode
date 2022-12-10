@@ -8,7 +8,6 @@ import hashlib
 import operator
 from functools import total_ordering, reduce
 
-
 LETTERS = [x for x in 'abcdefghijklmnopqrstuvwxyz']
 VOWELS = {'a', 'e', 'i', 'o', 'u'}
 CONSONANTS = set(x for x in LETTERS if x not in VOWELS)
@@ -49,13 +48,16 @@ def rotated(matrix):
     """Returns the given matrix rotated 90 degrees clockwise."""
     return [list(r) for r in zip(*matrix[::-1])]
 
+
 def firsts(matrix):
     """Like matrix[0], but for the first column."""
     return rotated(matrix)[0]
 
-def n_col(matrix,j):
+
+def n_col(matrix, j):
     """Like matrix[j], but for the j-th column."""
     return rotated(matrix)[j]
+
 
 def lasts(matrix):
     """Like matrix[-1], but for the last column."""
@@ -78,7 +80,7 @@ def all_unique(lst):
     return len(lst) == len(set(lst))
 
 
-def gcd(a,b):
+def gcd(a, b):
     """Compute the greatest common divisor of a and b"""
     while b > 0:
         a, b = b, a % b
@@ -89,21 +91,22 @@ def lcm(a, b):
     """Compute the lowest common multiple of a and b"""
     return a * b / gcd(a, b)
 
+
 def eratosthenes(n):
-    to_see = [1 for i in range (0,n+1)]
-    to_see[0],to_see[1] = 0,0
+    to_see = [1 for i in range(0, n + 1)]
+    to_see[0], to_see[1] = 0, 0
     current = []
-    for i in range (2,n+1):
+    for i in range(2, n + 1):
         if to_see[i]:
             current.append(i)
-            for suppr in range(i,n+1,i):
-                to_see[suppr]=0
+            for suppr in range(i, n + 1, i):
+                to_see[suppr] = 0
     return current
+
 
 def primes(n):
     """Return a list of primes from [2, n]"""
     return eratosthenes(n)
-
 
 
 def factors(n):
@@ -113,6 +116,7 @@ def factors(n):
             [i, n // i] for i in range(1, int(n ** 0.5) + 1)
             if n % i == 0)
         for x in tup)
+
 
 def min_max_xy(points):
     """
@@ -134,7 +138,9 @@ def min_max_xy(points):
 
     return min_x, max_x, min_y, max_y
 
+
 from collections import Counter
+
 
 def print_grid(grid, f=None, quiet=False):
     """
@@ -196,6 +202,7 @@ def print_grid(grid, f=None, quiet=False):
 
     return serialized, counts
 
+
 def factors(n):
     """Returns the factors of n."""
     return sorted(
@@ -216,9 +223,11 @@ def sha256(msg):
     s.update(msg)
     return s.hexdigest()
 
+
 @total_ordering
 class Point:
     """Simple 2-dimensional point."""
+
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -232,8 +241,14 @@ class Point:
     def __mul__(self, n):
         return Point(self.x * n, self.y * n)
 
-    def div(self, n):
-        return Point(self.x / n, self.y / n)
+    def __truediv__(self, other):
+        return Point(self.x / other.x, self.y / other.y)
+
+    def __floordiv__(self, other):
+        return Point(self.x // other.x, self.y // other.y)
+
+    def __mod__(self, other):
+        return Point(self.x % other.x, self.y % other.y)
 
     def __neg__(self):
         return Point(-self.x, -self.y)
@@ -255,10 +270,15 @@ class Point:
 
     def __hash__(self):
         return hash(tuple((self.x, self.y)))
+
     def int(self):
         self.x = int(self.x)
         self.y = int(self.y)
         return self
+
+    def div(self, n):
+        return Point(self.x / n, self.y / n)
+
     def dist(self, other):
         return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
 
@@ -269,7 +289,7 @@ class Point:
         return abs(self.x - other.x)
 
     def dist_manhattany(self, other):
-        return  abs(self.y - other.y)
+        return abs(self.y - other.y)
 
     def angle(self, to=None):
         if to is None:
@@ -315,6 +335,7 @@ class Point:
     def neighbors_8(self):
         return self.neighbours_8()
 
+
 N = Point(0, 1)
 NE = Point(1, 1)
 E = Point(1, 0)
@@ -325,34 +346,35 @@ W = Point(-1, 0)
 NW = Point(-1, 1)
 
 DIRS_4 = DIRS = [
-    Point(0, 1),   # north
-    Point(1, 0),   # east
+    Point(0, 1),  # north
+    Point(1, 0),  # east
     Point(0, -1),  # south
     Point(-1, 0),  # west
 ]
 
 DIRS_8 = [
-    Point(0, 1),    # N
-    Point(1, 1),    # NE
-    Point(1, 0),    # E
-    Point(1, -1),   # SE
-    Point(0, -1),   # S
+    Point(0, 1),  # N
+    Point(1, 1),  # NE
+    Point(1, 0),  # E
+    Point(1, -1),  # SE
+    Point(0, -1),  # S
     Point(-1, -1),  # SW
-    Point(-1, 0),   # W
-    Point(-1, 1),   # NW
+    Point(-1, 0),  # W
+    Point(-1, 1),  # NW
 ]
+
 
 class NonBinTree:
 
     def __init__(self, val):
-        self.x = val # the root
+        self.x = val  # the root
         self.c = []  # the childs
 
     def add_node(self, val):
         if type(val) == str:
             self.c.append(NonBinTree(val))
         else:
-            self.c.append(Leaf(val[0],val[1]))
+            self.c.append(Leaf(val[0], val[1]))
 
     def list_c_values(self):
         l = []
@@ -362,12 +384,15 @@ class NonBinTree:
             else:
                 l.append(self.c[i].n)
         return l
+
     def __repr__(self):
         return f"NonBinTree({self.x}): {self.c}"
 
+
 class Leaf:
-    def __init__(self,val:int,name):
+    def __init__(self, val: int, name):
         self.x = val
         self.n = name
+
     def __repr__(self):
         return f"Leaf({self.x})"
