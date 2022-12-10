@@ -232,7 +232,7 @@ class Point:
     def __mul__(self, n):
         return Point(self.x * n, self.y * n)
 
-    def __div__(self, n):
+    def div(self, n):
         return Point(self.x / n, self.y / n)
 
     def __neg__(self):
@@ -255,12 +255,21 @@ class Point:
 
     def __hash__(self):
         return hash(tuple((self.x, self.y)))
-
+    def int(self):
+        self.x = int(self.x)
+        self.y = int(self.y)
+        return self
     def dist(self, other):
         return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
 
     def dist_manhattan(self, other):
         return abs(self.x - other.x) + abs(self.y - other.y)
+
+    def dist_manhattanx(self, other):
+        return abs(self.x - other.x)
+
+    def dist_manhattany(self, other):
+        return  abs(self.y - other.y)
 
     def angle(self, to=None):
         if to is None:
