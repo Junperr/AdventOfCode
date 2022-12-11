@@ -26,7 +26,6 @@ def part1(day):
         count += 1
     return s
 
-
 print(part1(day))  # 12540
 
 
@@ -63,3 +62,12 @@ def part2(day):
 
 
 part2(day)  # FECZELHE
+
+# import timeit
+# nb = int(input())
+# s=0
+# for _ in range (nb):
+#     debtime = timeit.default_timer()
+#     part1(day)
+#     s+=timeit.default_timer() - debtime
+# print(s/nb)

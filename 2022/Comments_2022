@@ -91,6 +91,8 @@ late start for today, got a bit confused by .input which isn't a method but a at
 
 #### Comments
 
+At first i tried to do it without a proper tree and i struggled a lot with that,
+in the end i used a Nonbinary tree
 
 
 ### [Day 08: TBA](https://adventofcode.com/2022/day/8)
@@ -103,7 +105,7 @@ late start for today, got a bit confused by .input which isn't a method but a at
 
 #### Comments
 
-
+A lot of useless struggle on part2 because I wanted to use part1 for part2 while its not necessary
 
 ### [Day 09: TBA](https://adventofcode.com/2022/day/9)
 [problem](https://adventofcode.com/2022/day/9) / [solution](./day09)
@@ -114,7 +116,8 @@ late start for today, got a bit confused by .input which isn't a method but a at
 ```
 
 #### Comments
-
+Part 2 was a real struggle for me I was really slow to find the new movement
+Using Point was not that efficient because it was the first time but now i know ow to use it
 
 
 ### [Day 10: TBA](https://adventofcode.com/2022/day/10)
@@ -127,7 +130,7 @@ late start for today, got a bit confused by .input which isn't a method but a at
 
 #### Comments
 
-
+late start but pretty easy day
 
 ### [Day 11: TBA](https://adventofcode.com/2022/day/11)
 [problem](https://adventofcode.com/2022/day/11) / [solution](./day11)
@@ -139,7 +142,8 @@ late start for today, got a bit confused by .input which isn't a method but a at
 
 #### Comments
 
-
+Slow run for the parsing today
+I can thanks myself for wondering few day ago how to find the value of a string expression in python
 
 ### [Day 12: TBA](https://adventofcode.com/2022/day/12)
 [problem](https://adventofcode.com/2022/day/12) / [solution](./day12)
