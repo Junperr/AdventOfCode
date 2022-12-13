@@ -28,11 +28,11 @@ day = parsing.Day(year=2022, day=1)
 def part1(day):
 
     pass
-
+dayp2 = copy.deepcopy(day)
 print(part1(day))
 
 def part2(day):
 
     pass
 
-print(part2(day))
+print(part2(dayp2))

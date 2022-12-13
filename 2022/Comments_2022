@@ -93,6 +93,7 @@ late start for today, got a bit confused by .input which isn't a method but a at
 
 At first i tried to do it without a proper tree and i struggled a lot with that,
 in the end i used a Nonbinary tree
+To do: in kotlin with stack
 
 
 ### [Day 08: TBA](https://adventofcode.com/2022/day/8)
@@ -155,7 +156,8 @@ I can thanks myself for wondering few day ago how to find the value of a string 
 
 #### Comments
 
-
+Almost a brute trying every path until I see it's bad on the first solution
+To do : Do it with a proper graph
 
 ### [Day 13: TBA](https://adventofcode.com/2022/day/13)
 [problem](https://adventofcode.com/2022/day/13) / [solution](./day13)
@@ -167,6 +169,7 @@ I can thanks myself for wondering few day ago how to find the value of a string 
 
 #### Comments
 
+one more use of eval which is freaking slow but it was easier to parse like that
 
 
 ### [Day 14: TBA](https://adventofcode.com/2022/day/14)
