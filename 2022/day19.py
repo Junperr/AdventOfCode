@@ -20,9 +20,10 @@ from usefull import Point, DIRS, DIRS_4, DIRS_8, N, NE, E, SE, S, SW, W, NW
 # day  .input .l() .par() .b2d()
 
 
-pyperclip.copy("""""")
-clip = pyperclip.paste()
-day = parsing.Day(year=2022, day=1, sample=clip)
+# pyperclip.copy("""""")
+# clip = pyperclip.paste()
+# day = parsing.Day(year=2022, day=1, sample=clip)
+day = parsing.Day(year=2022, day=19)
 
 def part1(day):
 

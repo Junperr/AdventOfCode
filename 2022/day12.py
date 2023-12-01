@@ -50,11 +50,6 @@ def both_part(day,part=2):
         return to_go[s[0]][s[1]]
     else:
         return min(to_go[x[0]][x[1]] for x in a_elev)
-        min_path = 10**5
-        for x in a_elev:
-            if to_go[x[0]][x[1]]<min_path:
-                min_path=to_go[x[0]][x[1]]
-        return min_path
 
 print(both_part(day,1))
 

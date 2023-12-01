@@ -22,10 +22,12 @@ from usefull import Point, DIRS, DIRS_4, DIRS_8, N, NE, E, SE, S, SW, W, NW
 
 pyperclip.copy("""""")
 clip = pyperclip.paste()
-day = parsing.Day(year=2022, day=1, sample=clip)
+day = parsing.Day(year=2021, day=23, sample=clip)
 
 def part1(day):
-
+    for line in day.l():
+        line.replace("#","")
+        print(line)
     pass
 dayp2 = copy.deepcopy(day)
 print(part1(day))
