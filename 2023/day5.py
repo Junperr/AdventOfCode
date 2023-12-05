@@ -7,7 +7,7 @@ import pyperclip
 import parsing
 from usefull import parse_line, parse_nums, mul, all_unique, factors, primes
 from usefull import gcd, lcm, min_max_xy, print_grid
-from usefull import new_table, transposed, rotated, firsts, lasts,n_col
+from usefull import new_table, transposed, rotated, firsts, lasts, n_col
 from usefull import md5, sha256, VOWELS, CONSONANTS
 from usefull import Point, DIRS, DIRS_4, DIRS_8, N, NE, E, SE, S, SW, W, NW
 # Itertools Functions:
@@ -18,7 +18,7 @@ from usefull import Point, DIRS, DIRS_4, DIRS_8, N, NE, E, SE, S, SW, W, NW
 # Ascii code :                                A 65,Z 90,a 97,z 122,0 48,9 57
 
 # day  .input .l() .par() .b2d()
-
+import time
 
 pyperclip.copy("""seeds: 79 14 55 13
 
@@ -56,25 +56,30 @@ humidity-to-location map:
 """)
 clip = pyperclip.paste()
 day = parsing.Day(year=2023, day=5, sample=None)
+dayp2 = copy.deepcopy(day)
+deb = time.perf_counter_ns()
+
 
 def get_dict(par):
     d = {}
     for line in par.split("\n")[1:]:
         if line != "":
-            valb,keyb,rangeb = map(int,line.split())
-            d[(keyb,keyb+rangeb)] = valb
+            valb, keyb, rangeb = map(int, line.split())
+            d[(keyb, keyb + rangeb)] = valb
     return d
 
-def find_me(d,x):
-    for a,b in d.keys():
-        if a<=x<=b:
-            return d[(a,b)]+x-a
+
+def find_me(d, x):
+    for a, b in d.keys():
+        if a <= x <= b:
+            return d[(a, b)] + x - a
     return x
+
+
 def part1(day):
     input = day.input
     par = input.split("\n\n")
-    print(par)
-    seeds = list(map(int,par[0].split()[1:]))
+    seeds = list(map(int, par[0].split()[1:]))
     stos = get_dict(par[1])
     stof = get_dict(par[2])
     ftow = get_dict(par[3])
@@ -84,30 +89,32 @@ def part1(day):
     htol = get_dict(par[7])
     pos = []
 
-
     for x in seeds:
-        cur = find_me(stos,x)
-        cur = find_me(stof,cur)
-        cur = find_me(ftow,cur)
-        cur = find_me(wtol,cur)
-        cur = find_me(ltot,cur)
-        cur = find_me(ttoh,cur)
-        cur = find_me(htol,cur)
+        cur = find_me(stos, x)
+        cur = find_me(stof, cur)
+        cur = find_me(ftow, cur)
+        cur = find_me(wtol, cur)
+        cur = find_me(ltot, cur)
+        cur = find_me(ttoh, cur)
+        cur = find_me(htol, cur)
         pos.append(cur)
 
     return min(pos)
 
-dayp2 = copy.deepcopy(day)
-print(part1(day))
 
-def split_inter(d,inters):
+part1(day)
+print(time.perf_counter_ns() - deb, "time P1")
+print(part1(day))
+deb = time.perf_counter_ns()
+
+
+def split_inter(d, inters):
     interss = []
     still = copy.deepcopy(inters)
 
-
     while still:
 
-        a,b = still.pop()
+        a, b = still.pop()
         added = False
         for a1, b1 in d.keys():
             dec = d[(a1, b1)]
@@ -136,11 +143,11 @@ def split_inter(d,inters):
 def part2(day):
     input = day.input
     par = input.split("\n\n")
-    # print(par)
+
     seeds = []
     seedy = list(map(int, par[0].split()[1:]))
-    for i in range(0,len(seedy),2):
-        seeds.append((seedy[i], seedy[i] + seedy[i+1]))
+    for i in range(0, len(seedy), 2):
+        seeds.append((seedy[i], seedy[i] + seedy[i + 1]))
 
     stos = get_dict(par[1])
     stof = get_dict(par[2])
@@ -149,18 +156,18 @@ def part2(day):
     ltot = get_dict(par[5])
     ttoh = get_dict(par[6])
     htol = get_dict(par[7])
-    pos = []
 
-    seeds = split_inter(stos,seeds)
-    seeds = split_inter(stof,seeds)
-    seeds = split_inter(ftow,seeds)
-    seeds = split_inter(wtol,seeds)
-    seeds = split_inter(ltot,seeds)
-    seeds = split_inter(ttoh,seeds)
-    seeds = split_inter(htol,seeds)
-
+    seeds = split_inter(stos, seeds)
+    seeds = split_inter(stof, seeds)
+    seeds = split_inter(ftow, seeds)
+    seeds = split_inter(wtol, seeds)
+    seeds = split_inter(ltot, seeds)
+    seeds = split_inter(ttoh, seeds)
+    seeds = split_inter(htol, seeds)
 
     return min(seeds)[0]
 
 
+part2(dayp2)
+print(time.perf_counter_ns() - deb, "time P2")
 print(part2(dayp2))
