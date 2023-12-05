@@ -22,8 +22,8 @@ if [ ! -f "./2023/day1/day1" ]; then
 fi
 
 # Setting CPU to max performance mode (requires root permission)
-echo "Setting CPU to max performance mode..."
-echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
+#echo "Setting CPU to max performance mode..."
+#echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
 
 # Running the process on an isolated CPU core
 echo "Running on CPU core 1..."
