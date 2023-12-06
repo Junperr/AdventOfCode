@@ -30,6 +30,8 @@ echo "Running on CPU core 1..."
 taskset -c 1 ./2023/day1/day1
 
 taskset -c 1 ./2023/day2/day2
+
+taskset -c 1 ./2023/day6/day6
 # Different output formats
 # taskset -c 1 ./2023/day1/day1 --benchmark_format=console  # default
 # taskset -c 1 ./2023/day1/day1 --benchmark_format=json
