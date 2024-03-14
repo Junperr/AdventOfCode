@@ -13,7 +13,7 @@ string part1() {
 
     ifs.open("2023/day1/day1_input.txt");
     string line;
-
+    ifs >> line;
     int s = 0;
 
     while (ifs.good()) {
@@ -23,9 +23,9 @@ string part1() {
             int sint = x;
             if (sint > 47 and sint < 58) {
                 if (first == -1) {
-                    first = x - 48;
+                    first = sint - 48;
                 }
-                last = x - 48;
+                last = sint - 48;
             }
         }
         if (first != -1) {

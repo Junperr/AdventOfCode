@@ -1,15 +1,4 @@
-//#include <string>
-//#include <vector>
-//#include "fstream"
-//#include "iostream"
 #include "../../splitString.cpp"
-//#include "unordered_map"
-//#include "cmath"
-//
-//using namespace std;
-//std::ifstream ifs;
-
-
 #include <string>
 #include <vector>
 #include <fstream>
@@ -22,13 +11,22 @@ using namespace std;
 
 // Define a struct to hold the input data
 struct InputData {
-    vector<string> t;
-    vector<string> d;
+    vector<tuple<string>> t;
 };
 
 // Function to read input data from the file
 InputData readInputData() {
     ifstream ifs("2023/day8/day8_input.txt");
+    string line;
+    getline(ifs,line);
+    InputData v ;
+    while (ifs.good()){
+        vector<string> v1 = splitString(line,"=");
+        string base = v1[0].substr(0,v1[0].length()-1);
+        string left = v1[1].substr(2,5);
+        string right = v1[1].substr(6,9);
+        v.t.push_back(tuple<>)
+    }
 
     ifs.close();
     return {};

@@ -20,12 +20,32 @@ from usefull import Point, DIRS, DIRS_4, DIRS_8, N, NE, E, SE, S, SW, W, NW
 # day  .input .l() .par() .b2d()
 
 
-# pyperclip.copy("""""")
-# clip = pyperclip.paste()
-# day = parsing.Day(year=2022, day=1, sample=clip)
-day = parsing.Day(year=2022, day=19)
+pyperclip.copy("""Blueprint 1:
+  Each ore robot costs 4 ore.
+  Each clay robot costs 2 ore.
+  Each obsidian robot costs 3 ore and 14 clay.
+  Each geode robot costs 2 ore and 7 obsidian.
+
+Blueprint 2:
+  Each ore robot costs 2 ore.
+  Each clay robot costs 3 ore.
+  Each obsidian robot costs 3 ore and 8 clay.
+  Each geode robot costs 3 ore and 12 obsidian.""")
+clip = pyperclip.paste()
+day = parsing.Day(year=2022, day=19,sample=clip)
 
 def part1(day):
+    input = day.input
+    bps = input.split("\n\n")
+    for bp in bps:
+
+        lines = bp.split("\n")
+        id = lines[0].split()[1]
+        print(id)
+        cost = {}
+        for line in lines[1:]:
+            imp = line.split()[4:]
+            cost[]
 
     pass
 dayp2 = copy.deepcopy(day)

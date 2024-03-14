@@ -56,8 +56,6 @@ humidity-to-location map:
 """)
 clip = pyperclip.paste()
 day = parsing.Day(year=2023, day=5, sample=None)
-dayp2 = copy.deepcopy(day)
-deb = time.perf_counter_ns()
 
 
 def get_dict(par):
@@ -102,39 +100,63 @@ def part1(day):
     return min(pos)
 
 
-part1(day)
-print(time.perf_counter_ns() - deb, "time P1")
+def test(day):
+    dayp1, dayp2 = copy.deepcopy(day), copy.deepcopy(day)
+    timep1 = 0
+    countp1 = 0
+    while timep1 < 10 ** 9:
+        countp1 += 1
+        newdayp1 = copy.deepcopy(dayp1)
+        deb = time.perf_counter_ns()
+        part1(dayp1)
+        timed = time.perf_counter_ns() - deb
+        dayp1 = newdayp1
+        timep1 += timed
+    print(f"Part1 : runned {countp1} average of {timep1 / countp1} ns/operation")
+
+
+test(day)
+
+dayp2 = copy.deepcopy(day)
+deb = time.perf_counter()
+
+# part1(day)
+# print(time.perf_counter() - deb, "time P1")
 print(part1(day))
-deb = time.perf_counter_ns()
+deb = time.perf_counter()
 
 
 def split_inter(d, inters):
-    interss = []
-    still = copy.deepcopy(inters)
+    interss = []  # les intervals mapper pour le dictionnaire d
+    still = copy.deepcopy(inters)  # mes intervals actuel
 
-    while still:
+    while still:  # tant que j ai des interval non mapper
 
-        a, b = still.pop()
-        added = False
-        for a1, b1 in d.keys():
-            dec = d[(a1, b1)]
-            if a1 <= a <= b1 and a1 <= b <= b1:
+        a, b = still.pop()  # je recupere les borne d' un interval pas encore mapper
+        added = False  # un booleen savoir si l interval sera mapper a la fin ou reste le meme
+        for a1, b1 in d.keys():  # on itere sur les intervals de mon dictionnaire
+            dec = d[(a1, b1)]  # on stock la valeur auquel remapper si il faut
+            if a1 <= a <= b1 and a1 <= b <= b1:  # [a,b] inclu dans [a1,b1]
                 interss.append((dec + a - a1, dec + b - a1))
                 added = True
-            elif a1 <= b <= b1:
+                break
+            elif a1 <= b <= b1:  # b inclu dans [a1,b1] mais pas a cela rajoute le segment [a,a1-1] dans les segment a traiter (ca depasse a gauche)
                 interss.append((dec, dec + b - a1))
                 still.append((a, a1 - 1))
                 added = True
-            elif a1 <= a <= b1:
+                break
+            elif a1 <= a <= b1:  # a inclu dans [a1,b1] mais pas b cela rajoute le segment [b+1,b] dans les segment a traiter (ca depasse a droite)
                 interss.append((dec + a - a1, dec + b1 - a1))
                 still.append((b1 + 1, b))
                 added = True
-            elif a < a1 and b > b1:
+                break
+            elif a < a1 and b > b1:  # [a1,b1] inclu dans [a,b] cela rajoute les 2 segment precedent (ce qui depasse a droite et a gauche)
                 interss.append((dec, dec + b1 - a1))
                 still.append((a, a1 - 1))
                 still.append((b1 + 1, b))
                 added = True
-        if not added:
+                break
+        if not added:  # [a,b] inter [a1,b1] est vide
             interss.append((a, b))
 
     return interss
@@ -168,6 +190,8 @@ def part2(day):
     return min(seeds)[0]
 
 
-part2(dayp2)
-print(time.perf_counter_ns() - deb, "time P2")
+# part2(dayp2)
+# print(time.perf_counter() - deb, "time P2")
 print(part2(dayp2))
+
+test(day)

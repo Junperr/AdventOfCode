@@ -4,12 +4,15 @@
 
 #include "splitString.h"
 
-vector<string> splitString(string s, char sep) {
+vector<string> splitString(string s, const char *sep) {
     vector<string> v;
     string temp;
     for (char c: s) {
-        if (c == sep and !temp.empty()) {
-            v.push_back(temp);
+        if (c == sep ) {
+            if (!temp.empty()) {
+                v.push_back(temp);
+                temp = "";
+            }
             temp = "";
         } else {
             temp += c;

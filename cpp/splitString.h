@@ -9,7 +9,7 @@
 
 using namespace std;
 
-vector<string> splitString(string s, char sep);
+vector<string> splitString(string s, const char *sep);
 
 
 #endif //CPP_SPLITSTRING_H

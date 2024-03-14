@@ -19,18 +19,13 @@ from usefull import Point, DIRS, DIRS_4, DIRS_8, N, NE, E, SE, S, SW, W, NW
 # Ascii code :                                A 65,Z 90,a 97,z 122,0 48,9 57
 
 # day  .input .l() .par() .b2d()
+import time
 
+pyperclip.copy("""LL
 
-pyperclip.copy("""LR
-
-11A = (11B, XXX)
-11B = (XXX, 11Z)
-11Z = (11B, XXX)
-22A = (22B, XXX)
-22B = (22C, 22C)
-22C = (22Z, 22Z)
-22Z = (22B, 22B)
-XXX = (XXX, XXX)
+10A = (11A,11A)
+11A = (10Z,10Z)
+10Z = (10A,10A)
 """)
 clip = pyperclip.paste()
 day = parsing.Day(year=2023, day=8, sample=None)
@@ -56,13 +51,14 @@ def part1(day):
             cur = travel[cur][0]
         count += 1
     return count
-
-
+deb = time.perf_counter_ns()
+part1(day)
+print(time.perf_counter_ns()-deb,"time P1")
 
 dayp2 = copy.deepcopy(day)
 
 
-print(part1(day))
+# print(part1(day))
 
 def part2(day):
     l = day.l()
@@ -79,7 +75,7 @@ def part2(day):
         left = lr[1:4]
         right = lr[6:9]
         travel[base] = (left, right)
-
+    # print(cur)
     cycle = [(-1, "")] * len(cur)
     for i in range(len(cur)):
 
@@ -93,12 +89,13 @@ def part2(day):
             count += 1
 
         cycle[i] = (count, seq[count % len(seq):] + seq[:count % len(seq)])
-
+    # print(cycle)
     sol = 1
     for c in cycle:
         sol = lcm(sol, c[0])
 
     return int(sol)
-
-
-print(part2(dayp2))
+deb = time.perf_counter_ns()
+part2(dayp2)
+print(time.perf_counter_ns()-deb,"time P2")
+# print(part2(dayp2))

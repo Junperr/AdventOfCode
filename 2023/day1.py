@@ -44,11 +44,9 @@ def part2(day):
     s = 0
     for l in day.l():
         first, last = -1, -1
-        cur = ""
         for i in range(len(l)):
             x = l[i]
             if ord(x) < 58 and ord(x) > 47:
-                cur = ""
                 if first == -1:
                     first = int(x)
                 last = int(x)

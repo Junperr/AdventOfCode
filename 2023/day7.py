@@ -4,6 +4,7 @@ from collections import Counter, defaultdict, deque, namedtuple
 from itertools import count, product, permutations, combinations, combinations_with_replacement
 import pyperclip
 
+import time
 import parsing
 from usefull import parse_line, parse_nums, mul, all_unique, factors, primes
 from usefull import gcd, lcm, min_max_xy, print_grid
@@ -27,6 +28,8 @@ KTJJT 220
 QQQJA 483""")
 clip = pyperclip.paste()
 day = parsing.Day(year=2023, day=7, sample=None)
+dayp2 = copy.deepcopy(day)
+
 
 def compcards(cards):
     c = ["J","2","3","4","5","6","7","8","9","T","Q","K","A"]
@@ -44,20 +47,21 @@ def part1(day):
         cards = compcardsP1(cards)
         for c in cards:
             occ[c] = occ.get(c,0) + 1
-        occI = sorted(occ.items(), key=lambda item: [item[1],item[0]], reverse=True)
         comp = sorted(list(occ.values()), reverse=True)
         comp = comp + cards + [score]
         comps.append(comp)
-
+    # print(comps)
     comps.sort()
 
     s = 0
     for i in range(len(comps)):
         s += comps[i][-1]*(i+1)
     return s
-
-dayp2 = copy.deepcopy(day)
+deb = time.perf_counter()
+part1(day)
+print(time.perf_counter() - deb, "time P1")
 print(part1(day))
+deb = time.perf_counter()
 
 def part2(day):
     comps = []
@@ -88,5 +92,6 @@ def part2(day):
     for i in range(len(comps)):
         s += comps[i][-2]*(i+1)
     return s
-
+part2(dayp2)
+print(time.perf_counter() - deb, "time P2")
 print(part2(dayp2))
